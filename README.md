@@ -22,7 +22,7 @@ Customers with simple, urgent questions (a lost card, a fee they don't understan
 ## What's in this repo
 | Folder | What it is |
 | --- | --- |
-| [docs/](docs/) | PRD, stage 1 spec, decision log, setup guide, training phrases |
+| [docs/](docs/) | PRD, stage 1 spec, decision log, [architecture blueprint](docs/stage1-blueprint.md), [step-by-step build guide](docs/stage1-build-every-step.md), setup guide, training phrases |
 | [agent/](agent/) | The bot itself, as exported from Dialogflow CX |
 | [web/](web/) | The help page with the chat widget |
 | [evals/](evals/) | The 20 automated tests (promptfoo + a small Dialogflow connector) |

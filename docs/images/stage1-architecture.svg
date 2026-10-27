@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1150" role="img" aria-labelledby="dgt">
+  <title id="dgt">Architecture: customer, then understand layer with intents and fee_type entity, then Default Start Flow with Start, Fee answer and Offer handoff pages plus the Always available route group, then the Human handoff flow, then a human team member.</title>
+  <style>
+    text { font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif; fill: #15232c; }
+    .t-title { font-size: 21px; font-weight: 700; }
+    .t-body { font-size: 16px; }
+    .t-muted { font-size: 15px; fill: #52646f; }
+    .t-layer { font-size: 15px; font-weight: 700; letter-spacing: .06em; fill: #0b6e79; }
+    .t-arrow { font-size: 15px; paint-order: stroke; stroke: #eef3f5; stroke-width: 4px; font-weight: 600; fill: #0b6e79; }
+    .t-hand { fill: #a4471d; }
+    .bg { fill: #f6f8f9; }
+    .box { fill: #ffffff; stroke: #c9d5db; stroke-width: 1.5; }
+    .panel { fill: #eef3f5; stroke: none; }
+    .agent { fill: none; stroke: #52646f; stroke-width: 1.5; stroke-dasharray: 8 6; }
+    .band { fill: #fbece4; stroke: #a4471d; stroke-width: 1.5; }
+    .hbox { fill: #fbece4; stroke: #a4471d; stroke-width: 2; }
+    .ln { stroke: #0b6e79; stroke-width: 2.5; fill: none; }
+    .ln-h { stroke: #a4471d; stroke-width: 2.5; fill: none; }
+    .dot { stroke: #a4471d; stroke-width: 2; stroke-dasharray: 4 5; fill: none; }
+    .badge circle { fill: #0b6e79; }
+    .badge text { fill: #ffffff; font-size: 15px; font-weight: 700; text-anchor: middle; }
+    .ah { fill: #0b6e79; }
+    .ah-h { fill: #a4471d; }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path class="ah-h" d="M0,0 L10,5 L0,10 z"/></marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="960" height="1150"/>
+
+  <rect class="box" x="310" y="16" width="340" height="76" rx="10"/>
+  <text class="t-title" x="480" y="48" text-anchor="middle">Customer</text>
+  <text class="t-muted" x="480" y="74" text-anchor="middle">types a message in the chat</text>
+  <path class="ln" d="M480 92 V150" marker-end="url(#a)"/>
+
+  <rect class="agent" x="16" y="156" width="928" height="850" rx="16"/>
+  <text class="t-muted" x="36" y="184" font-weight="600">THE AGENT · Conversational Agents (Dialogflow CX)</text>
+
+  <rect class="panel" x="40" y="200" width="880" height="196" rx="12"/>
+  <text class="t-layer" x="62" y="230">1 · UNDERSTAND: what does the customer want?</text>
+  <rect class="box" x="62" y="248" width="500" height="128" rx="10"/>
+  <g class="badge"><circle cx="90" cy="276" r="14"/><text x="90" y="281">1</text></g>
+  <g class="badge"><circle cx="122" cy="276" r="14"/><text x="122" y="281">2</text></g>
+  <text class="t-title" x="146" y="283">Intents (9)</text>
+  <text class="t-body" x="82" y="314">human.request · card.lost · dispute · fees.complaint</text>
+  <text class="t-body" x="82" y="338">sensitive.shared · advice.ask · yes · no · fees.ask</text>
+  <text class="t-muted" x="82" y="362">each taught with 15–25 example sentences</text>
+  <rect class="box" x="590" y="248" width="308" height="128" rx="10"/>
+  <g class="badge"><circle cx="618" cy="276" r="14"/><text x="618" y="281">3</text></g>
+  <text class="t-title" x="642" y="283">Entity: fee_type</text>
+  <text class="t-body" x="610" y="314">17 fees and their other names</text>
+  <text class="t-muted" x="610" y="338">"overdrawn" → overdraft</text>
+  <text class="t-muted" x="610" y="362">"another bank's ATM" → domestic_atm</text>
+
+  <path class="ln" d="M480 396 V452" marker-end="url(#a)"/>
+  <text class="t-arrow" x="496" y="430">label + note, e.g. fees.ask, fee_type = overdraft</text>
+
+  <rect class="panel" x="40" y="458" width="880" height="380" rx="12"/>
+  <text class="t-layer" x="62" y="488">2 · DECIDE and 3 · RESPOND: Default Start Flow (fixed rules, fixed words)</text>
+
+  <rect class="box" x="62" y="512" width="236" height="178" rx="10"/>
+  <g class="badge"><circle cx="90" cy="540" r="14"/><text x="90" y="545">6</text></g>
+  <text class="t-title" x="114" y="547">Start page</text>
+  <text class="t-body" x="80" y="578">• says the welcome</text>
+  <text class="t-body" x="80" y="602">• card number → warning</text>
+  <text class="t-body" x="80" y="626">• advice → polite no</text>
+  <text class="t-body" x="80" y="650">• not understood twice</text>
+  <text class="t-body t-hand" x="94" y="672">→ person</text>
+
+  <rect class="box" x="362" y="512" width="236" height="178" rx="10"/>
+  <g class="badge"><circle cx="390" cy="540" r="14"/><text x="390" y="545">7</text></g>
+  <text class="t-title" x="414" y="547">Fee answer</text>
+  <text class="t-body" x="380" y="578">18 rules, checked</text>
+  <text class="t-body" x="380" y="602">top to bottom:</text>
+  <text class="t-body" x="380" y="626">• known fee → exact</text>
+  <text class="t-body" x="394" y="648">answer, e.g. $35.00</text>
+  <text class="t-body" x="380" y="672">• unknown fee → offer</text>
+
+  <rect class="box" x="662" y="512" width="236" height="178" rx="10"/>
+  <g class="badge"><circle cx="690" cy="540" r="14"/><text x="690" y="545">8</text></g>
+  <text class="t-title" x="714" y="547">Offer handoff</text>
+  <text class="t-body" x="680" y="578">"Would you like a</text>
+  <text class="t-body" x="680" y="602">team member?"</text>
+  <text class="t-body t-hand" x="680" y="626">• yes → person</text>
+  <text class="t-body" x="680" y="650">• no → back to Start</text>
+  <text class="t-body" x="680" y="674">• new fee → Fee answer</text>
+
+  <path class="ln" d="M298 560 H356" marker-end="url(#a)"/>
+  <text class="t-arrow" x="327" y="550" text-anchor="middle">fee</text>
+  <path class="ln" d="M598 560 H656" marker-end="url(#a)"/>
+  <text class="t-arrow" x="627" y="550" text-anchor="middle" font-size="13">unknown</text>
+  <path class="ln" d="M362 640 H304" marker-end="url(#a)"/>
+  <text class="t-arrow" x="331" y="662" text-anchor="middle">back</text>
+
+  <path class="dot" d="M180 690 V728"/><path class="dot" d="M480 690 V728"/><path class="dot" d="M780 690 V728"/>
+  <rect class="band" x="62" y="728" width="836" height="90" rx="10"/>
+  <g class="badge"><circle cx="90" cy="756" r="14"/><text x="90" y="761">5</text></g>
+  <text class="t-title t-hand" x="114" y="763">Always available route group (attached to all 3 pages)</text>
+  <text class="t-body" x="82" y="796">"talk to a person" · lost card · dispute · fee complaint → person, on the first ask</text>
+
+  <path class="ln-h" d="M480 818 V872" marker-end="url(#ah)"/>
+  <text class="t-arrow t-hand" x="496" y="852">every route to a person ends here</text>
+
+  <rect class="hbox" x="200" y="878" width="560" height="104" rx="12"/>
+  <g class="badge"><circle cx="228" cy="906" r="14"/><text x="228" y="911">4</text></g>
+  <text class="t-title" x="252" y="913">Human handoff flow</text>
+  <text class="t-body" x="222" y="944">sends the live agent handoff signal, with a note on why</text>
+  <text class="t-muted" x="222" y="968">(handoff_summary), then ends the bot's part of the chat</text>
+
+  <path class="ln-h" d="M480 982 V1046" marker-end="url(#ah)"/>
+
+  <rect class="box" x="310" y="1052" width="340" height="80" rx="10"/>
+  <text class="t-title" x="480" y="1086" text-anchor="middle">Human team member</text>
+  <text class="t-muted" x="480" y="1112" text-anchor="middle">simulated in stage 1</text>
+</svg>
