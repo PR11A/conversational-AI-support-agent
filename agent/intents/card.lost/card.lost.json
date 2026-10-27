@@ -1,0 +1,11 @@
+{
+  "name": "f78ae9dc-4171-45e1-bef8-2b04ba7faee3",
+  "displayName": "card.lost",
+  "parameters": [ {
+    "id": "date-time",
+    "entityType": "@sys.date-time"
+  } ],
+  "priority": 500000,
+  "description": "Intent to capture when customer card is lost ",
+  "numTrainingPhrases": 19
+}

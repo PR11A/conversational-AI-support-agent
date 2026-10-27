@@ -1,0 +1,71 @@
+{
+  "entities": [ {
+    "value": "early_closure",
+    "synonyms": [ "account closed within 90 days", "close account early", "closing fee" ],
+    "languageCode": "en"
+  }, {
+    "value": "paper_statement",
+    "synonyms": [ "mailed statement", "paper statement", "printed statement" ],
+    "languageCode": "en"
+  }, {
+    "value": "stop_payment",
+    "synonyms": [ "stop a cheque", "stop payment" ],
+    "languageCode": "en"
+  }, {
+    "value": "wire_incoming",
+    "synonyms": [ "incoming wire", "receive a wire" ],
+    "languageCode": "en"
+  }, {
+    "value": "wire_international_out",
+    "synonyms": [ "international wire", "overseas transfer", "send money abroad" ],
+    "languageCode": "en"
+  }, {
+    "value": "wire_domestic_out",
+    "synonyms": [ "domestic wire", "send a wire", "wire transfer" ],
+    "languageCode": "en"
+  }, {
+    "value": "replacement_card_express",
+    "synonyms": [ "card express delivery", "replacement_card_express", "urgent card" ],
+    "languageCode": "en"
+  }, {
+    "value": "replacement_card",
+    "synonyms": [ "new card", "replacement card" ],
+    "languageCode": "en"
+  }, {
+    "value": "foreign_transaction",
+    "synonyms": [ "buying abroad", "card abroad", "foreign transaction", "overseas purchase" ],
+    "languageCode": "en"
+  }, {
+    "value": "overseas_atm",
+    "synonyms": [ "ATM abroad", "foreign ATM", "international ATM", "overseas ATM" ],
+    "languageCode": "en"
+  }, {
+    "value": "domestic_atm",
+    "synonyms": [ "another bank's ATM", "domestic ATM", "other ATM" ],
+    "languageCode": "en"
+  }, {
+    "value": "harbourline_atm",
+    "synonyms": [ "Harbourline ATM", "own ATM", "your ATM," ],
+    "languageCode": "en"
+  }, {
+    "value": "nsf",
+    "synonyms": [ "bounced payment", "insufficient funds", "NSF", "returned payment" ],
+    "languageCode": "en"
+  }, {
+    "value": "overdraft",
+    "synonyms": [ "overdraft", "overdraft charge", "overdrawn" ],
+    "languageCode": "en"
+  }, {
+    "value": "premier_monthly",
+    "synonyms": [ "premier account fee,", "premier monthly fee" ],
+    "languageCode": "en"
+  }, {
+    "value": "everyday_monthly",
+    "synonyms": [ "everyday account fee", "everyday monthly fee" ],
+    "languageCode": "en"
+  }, {
+    "value": "monthly_fee",
+    "synonyms": [ "account fee", "account keeping fee", "monthly fee," ],
+    "languageCode": "en"
+  } ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "7f3775a2-ebfa-446b-91fc-545d5a960383",
+  "displayName": "fees.ask",
+  "parameters": [ {
+    "id": "fee_type",
+    "entityType": "@fee_type"
+  } ],
+  "priority": 500000,
+  "numTrainingPhrases": 25
+}

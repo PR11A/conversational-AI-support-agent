@@ -1,0 +1,165 @@
+{
+  "trainingPhrases": [ {
+    "parts": [ {
+      "text": "this is my full card number ",
+      "auto": true
+    }, {
+      "text": "3782 822463 10005",
+      "parameterId": "phone-number",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "pin ",
+      "auto": true
+    }, {
+      "text": "4321",
+      "parameterId": "date-period",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my card ends 4111 ",
+      "auto": true
+    }, {
+      "text": "1111 1111 1111",
+      "parameterId": "phone-number",
+      "auto": true
+    }, {
+      "text": " and expires ",
+      "auto": true
+    }, {
+      "text": "12",
+      "parameterId": "number",
+      "auto": true
+    }, {
+      "text": "/",
+      "auto": true
+    }, {
+      "text": "28",
+      "parameterId": "number",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my online banking password is abc",
+      "auto": true
+    }, {
+      "text": "123",
+      "parameterId": "number",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "here's my login password",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my pin number is ",
+      "auto": true
+    }, {
+      "text": "9876",
+      "parameterId": "number",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "card number 4000 ",
+      "auto": true
+    }, {
+      "text": "1234 5678 9010",
+      "parameterId": "phone-number",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my account password is ",
+      "auto": true
+    }, {
+      "text": "summer2026",
+      "parameterId": "date-period",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my security code is ",
+      "auto": true
+    }, {
+      "text": "456",
+      "parameterId": "number",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "the CVV is 123",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my password is Harbour123",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "here is my card number ",
+      "auto": true
+    }, {
+      "text": "5500 0000 0000",
+      "parameterId": "phone-number",
+      "auto": true
+    }, {
+      "text": " 0004",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my PIN is ",
+      "auto": true
+    }, {
+      "text": "1234",
+      "parameterId": "number",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my card number is ",
+      "auto": true
+    }, {
+      "text": "4111 1111 1111",
+      "parameterId": "phone-number",
+      "auto": true
+    }, {
+      "text": " 1111",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  } ]
+}

@@ -1,0 +1,293 @@
+{
+  "name": "d9d2c612-e3d1-4295-a339-7a40a18e237e",
+  "displayName": "Fee answer",
+  "form": {
+  
+  },
+  "transitionRoutes": [ {
+    "condition": "$session.params.fee_type = \"overdraft\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Our Overdraft fee is $35.00 per item, up to a maximum of 3 per day. A team member can check your actual account if you'd like. Anything else I can help with?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "fee_type",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Start Page",
+    "name": "30e49bc2-d84e-473f-be85-a585212c6495"
+  }, {
+    "condition": "$session.params.fee_type = \"monthly_fee\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "The Everyday Account monthly fee is $5.00 (waived if you deposit $1,000+ that month). The Premier Account monthly fee is $15.00 (waived with a $10,000+ balance all month). Anything else I can help with?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "fee_type",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Start Page",
+    "name": "11c0b5ad-cd02-4e14-96eb-c827c0defb0d"
+  }, {
+    "condition": "$session.params.fee_type = \"everyday_monthly\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "The Everyday Account monthly fee is $5.00. It's waived in any month you deposit $1,000 or more. Anything else I can help with?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "fee_type",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Start Page",
+    "name": "c433f396-116a-47e9-bf22-9f29cf4c4481"
+  }, {
+    "condition": "$session.params.fee_type = \"premier_monthly\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "The Premier Account monthly fee is $15.00. It's waived if you keep a balance of $10,000 or more all month. Anything else I can help with?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "fee_type",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Start Page",
+    "name": "851651b9-9821-40da-aca5-daf2716b0709"
+  }, {
+    "condition": "$session.params.fee_type = \"nsf\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "The Returned payment (NSF) fee is $30.00. A team member can check your actual account if you'd like. Anything else I can help with?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "fee_type",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Start Page",
+    "name": "9b03607f-3ffe-427b-8efd-a128c0e15b41"
+  }, {
+    "condition": "$session.params.fee_type = \"harbourline_atm\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Withdrawals at Harbourline ATMs are free. Anything else I can help with?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "fee_type",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Start Page",
+    "name": "20d90399-2590-4c82-af1f-74f9cf3e625e"
+  }, {
+    "condition": "$session.params.fee_type = \"domestic_atm\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Withdrawing cash at another bank's ATM in this country costs $2.50. Anything else I can help with?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "fee_type",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Start Page",
+    "name": "9ef435b3-a8c6-4679-9dbd-0485fbf2df42"
+  }, {
+    "condition": "$session.params.fee_type = \"overseas_atm\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "The Overseas ATM withdrawal fee is $5.00 plus 3% of the amount. Anything else I can help with?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "fee_type",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Start Page",
+    "name": "275659d4-8a31-4eee-a4b7-51df795959b8"
+  }, {
+    "condition": "$session.params.fee_type = \"foreign_transaction\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "The Foreign transaction fee for card purchases abroad is 3% of the amount. Anything else I can help with?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "fee_type",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Start Page",
+    "name": "289a8190-968d-4462-ad6d-d26b6f4f6f86"
+  }, {
+    "condition": "$session.params.fee_type = \"replacement_card\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "A standard replacement debit card is free. Express delivery costs $25.00. Anything else I can help with?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "fee_type",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Start Page",
+    "name": "6f1b68a7-99e3-4361-a314-26a63d5805fb"
+  }, {
+    "condition": "$session.params.fee_type = \"replacement_card_express\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Express delivery of a replacement debit card costs $25.00. Anything else I can help with?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "fee_type",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Start Page",
+    "name": "740f2b42-ecdb-4408-8d44-08399050a4a6"
+  }, {
+    "condition": "$session.params.fee_type = \"wire_domestic_out\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Sending a domestic wire transfer costs $25.00. Anything else I can help with?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "fee_type",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Start Page",
+    "name": "193cc910-8469-4dd8-8f9e-e26141df8a5a"
+  }, {
+    "condition": "$session.params.fee_type = \"wire_international_out\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Sending an international wire transfer costs $45.00. Anything else I can help with?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "fee_type",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Start Page",
+    "name": "eed166c7-3987-4ee9-a211-fca9af20e3c0"
+  }, {
+    "condition": "$session.params.fee_type = \"wire_incoming\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Receiving a wire transfer costs $15.00. Anything else I can help with?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "fee_type",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Start Page",
+    "name": "556f115e-2b1a-426c-9ed1-ad8397ae672f"
+  }, {
+    "condition": "$session.params.fee_type = \"stop_payment\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "A stop payment request costs $30.00. Anything else I can help with?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "fee_type",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Start Page",
+    "name": "b6072999-d93d-4c1f-bb3c-a01926284911"
+  }, {
+    "condition": "$session.params.fee_type = \"paper_statement\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Paper statements cost $2.00 per month. E-statements are free. Anything else I can help with?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "fee_type",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Start Page",
+    "name": "4017fdbc-a31a-4ab5-b5d1-0caef9bd66b7"
+  }, {
+    "condition": "$session.params.fee_type = \"early_closure\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "f you close an account within 90 days of opening it, the fee is $25.00. Anything else I can help with?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "fee_type",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Start Page",
+    "name": "b5727d1a-9468-4328-acc4-37ba9b3bc398"
+  }, {
+    "condition": "true",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I don't have that fee in our schedule, so I don't want to guess. Would you like me to connect you with a team member?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Offer handoff",
+    "name": "a3e3a12c-8cdf-4456-96f0-adec537344f7"
+  } ],
+  "transitionRouteGroups": [ "Always available" ]
+}

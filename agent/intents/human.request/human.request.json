@@ -1,0 +1,7 @@
+{
+  "name": "b253a802-f67c-4bf4-9beb-c2ce89183f66",
+  "displayName": "human.request",
+  "priority": 500000,
+  "description": "Intent is triggered when customer wants to be in touch with human",
+  "numTrainingPhrases": 19
+}

@@ -1,0 +1,107 @@
+{
+  "name": "00000000-0000-0000-0000-000000000000",
+  "displayName": "Default Start Flow",
+  "description": "A start flow created along with the agent",
+  "transitionRoutes": [ {
+    "intent": "Default Welcome Intent",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Hi, I'm Harbourline's virtual assistant. I can answer questions about our fees, and I can connect you with a team member for anything else. What can I help with?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "f29e7af5-08ad-4a32-bc54-09624ed3e92b"
+  }, {
+    "intent": "fees.ask",
+    "triggerFulfillment": {
+    
+    },
+    "targetPage": "Fee answer",
+    "name": "70b2bf33-f962-4ca6-9070-6f65ee0819bf"
+  }, {
+    "intent": "sensitive.shared",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Please don’t share card numbers, PINs or passwords here. I don’t need them to answer fee questions. What can I help with?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "43042837-431f-45ee-8832-2eaffcc7a689"
+  }, {
+    "intent": "advice.ask",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I can’t give personal advice, but I can tell you the fees for each account. Which fee would you like to know about?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "5e5464d6-c7e4-4d2a-94e0-0543657e3766"
+  } ],
+  "eventHandlers": [ {
+    "event": "sys.no-match-default",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I didn't get that. Can you say it again?", "I missed what you said. What was that?", "Sorry, could you say that again?", "Sorry, can you say that again?", "Can you say that again?", "Sorry, I didn't get that. Can you rephrase?", "Sorry, what was that?", "One more time?", "What was that?", "Say that one more time?", "I didn't get that. Can you repeat?", "I missed that, say that again?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "10b35e31-c003-4e41-aea3-79c4415f877c"
+  }, {
+    "event": "sys.no-input-default",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I didn't get that. Can you say it again?", "I missed what you said. What was that?", "Sorry, could you say that again?", "Sorry, can you say that again?", "Can you say that again?", "Sorry, I didn't get that. Can you rephrase?", "Sorry, what was that?", "One more time?", "What was that?", "Say that one more time?", "I didn't get that. Can you repeat?", "I missed that, say that again?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "0b98b8a7-482c-47b8-b32e-f2b34bce17f4"
+  }, {
+    "event": "sys.no-match-1",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Sorry, I didn't catch that. I can help with fees, or connect you with a team member." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "9ba5e787-bd71-4695-805f-d919beb86794"
+  }, {
+    "targetFlow": "Human handoff",
+    "event": "sys.no-match-2",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I'm connecting you with a team member who can help." ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "handoff_summary",
+        "value": "bot could not understand twice"
+      } ]
+    },
+    "name": "d885d6f1-7211-49fb-a1a9-647e1025fa05"
+  } ],
+  "nluSettings": {
+    "modelType": "MODEL_TYPE_ADVANCED",
+    "classificationThreshold": 0.30000001
+  },
+  "transitionRouteGroups": [ "Always available" ],
+  "nluSettingsList": [ {
+    "modelType": "MODEL_TYPE_ADVANCED",
+    "classificationThreshold": 0.30000001,
+    "customConfigKey": "4811a317-adeb-4811-9813-ab434235b2a4",
+    "languageCode": "en"
+  } ]
+}

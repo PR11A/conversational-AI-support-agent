@@ -1,0 +1,11 @@
+{
+  "name": "945c724c-ab1f-49c5-b0f8-a6a53b5773b1",
+  "displayName": "dispute",
+  "parameters": [ {
+    "id": "person",
+    "entityType": "@sys.person"
+  } ],
+  "priority": 500000,
+  "description": "How dispute is handled by agent",
+  "numTrainingPhrases": 19
+}

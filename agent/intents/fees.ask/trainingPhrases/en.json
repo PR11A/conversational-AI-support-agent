@@ -1,0 +1,226 @@
+{
+  "trainingPhrases": [ {
+    "parts": [ {
+      "text": "what does a certified letter from the bank cost",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "do you charge for coin counting",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what's the charge for a safe deposit box",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "how much is a money order",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "fee for a bank draft",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "fees for "
+    }, {
+      "text": "card abroad",
+      "parameterId": "fee_type"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "how much do you charge for "
+    }, {
+      "text": "overdrawn",
+      "parameterId": "fee_type"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "everyday account fee",
+      "parameterId": "fee_type"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "premier account fee",
+      "parameterId": "fee_type"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "is there a fee to "
+    }, {
+      "text": "close account early",
+      "parameterId": "fee_type"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what does it cost to "
+    }, {
+      "text": "receive a wire",
+      "parameterId": "fee_type"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what's the "
+    }, {
+      "text": "NSF",
+      "parameterId": "fee_type"
+    }, {
+      "text": " fee"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "how much for a "
+    }, {
+      "text": "stop payment",
+      "parameterId": "fee_type"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what's the "
+    }, {
+      "text": "foreign transaction",
+      "parameterId": "fee_type"
+    }, {
+      "text": " fee"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "are "
+    }, {
+      "text": "Harbourline ATM",
+      "parameterId": "fee_type"
+    }, {
+      "text": " withdrawals free"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "is there a fee for using "
+    }, {
+      "text": "another bank's ATM",
+      "parameterId": "fee_type"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what's the "
+    }, {
+      "text": "express card",
+      "parameterId": "fee_type"
+    }, {
+      "text": " fee"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "how much is a "
+    }, {
+      "text": "replacement card",
+      "parameterId": "fee_type"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "do you charge for "
+    }, {
+      "text": "paper statements",
+      "parameterId": "fee_type"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what is the fee for an "
+    }, {
+      "text": "international wire",
+      "parameterId": "fee_type"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "how much does a "
+    }, {
+      "text": "domestic wire",
+      "parameterId": "fee_type"
+    }, {
+      "text": " cost"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what's the "
+    }, {
+      "text": "monthly fee",
+      "parameterId": "fee_type"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "why was I charged ",
+      "auto": true
+    }, {
+      "text": "$35"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what do you charge for "
+    }, {
+      "text": "overseas ATM",
+      "parameterId": "fee_type"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "how much is the "
+    }, {
+      "text": "overdraft",
+      "parameterId": "fee_type"
+    }, {
+      "text": " fee"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  } ]
+}

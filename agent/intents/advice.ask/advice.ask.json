@@ -1,0 +1,13 @@
+{
+  "name": "7bd757f0-875d-4953-9ca6-db78c3103ea1",
+  "displayName": "advice.ask",
+  "parameters": [ {
+    "id": "person",
+    "entityType": "@sys.person"
+  }, {
+    "id": "geo-city",
+    "entityType": "@sys.geo-city"
+  } ],
+  "priority": 500000,
+  "numTrainingPhrases": 15
+}

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Harbourline Bank · Help</title>
+  <style>
+    :root {
+      --navy: #0b2545;
+      --teal: #13827a;
+      --ink: #1d2733;
+      --muted: #5b6776;
+      --bg: #f4f6f9;
+      --card: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+    header { background: var(--navy); color: #fff; padding: 16px; }
+    header .wrap { display: flex; align-items: baseline; gap: 12px; }
+    header strong { font-size: 1.25rem; letter-spacing: 0.02em; }
+    header span { opacity: 0.8; }
+    .wrap { max-width: 760px; margin: 0 auto; }
+    main { padding: 32px 16px 120px; }
+    h1 { font-size: 1.75rem; margin: 0 0 8px; }
+    .lead { color: var(--muted); margin: 0 0 24px; }
+    .card { background: var(--card); border-radius: 8px; padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    .card h2 { font-size: 1.05rem; margin: 0 0 6px; }
+    .card p { margin: 0; color: var(--muted); }
+    .urgent { border-left: 4px solid #c0392b; }
+    footer { color: var(--muted); font-size: 0.85rem; padding: 0 16px 32px; }
+
+    /* Widget colours (Conversational Messenger reads these CSS variables) */
+    df-messenger {
+      z-index: 999;
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      --df-messenger-font-color: #1d2733;
+      --df-messenger-font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --df-messenger-chat-background: #f4f6f9;
+      --df-messenger-message-user-background: #d7ece9;
+      --df-messenger-message-bot-background: #ffffff;
+      --df-messenger-titlebar-background: #0b2545;
+      --df-messenger-titlebar-font-color: #ffffff;
+      --df-messenger-chat-bubble-background: #13827a;
+      --df-messenger-chat-bubble-icon-color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap"><strong>Harbourline Bank</strong><span>Help</span></div>
+  </header>
+
+  <main class="wrap">
+    <h1>How can we help?</h1>
+    <p class="lead">Ask our virtual assistant about fees, or ask to talk to a team member at any time. Use the chat button in the bottom corner.</p>
+
+    <div class="card urgent">
+      <h2>Lost or stolen card?</h2>
+      <p>Freeze your card in the Harbourline app now, or call our 24/7 card line on 1-800-555-0142.</p>
+    </div>
+    <div class="card">
+      <h2>Fees</h2>
+      <p>Monthly account fees, overdraft, ATMs, wires, cards and statements.</p>
+    </div>
+    <div class="card">
+      <h2>Something else?</h2>
+      <p>Disputes, complaints and anything about your own account go to a team member.</p>
+    </div>
+  </main>
+
+  <footer class="wrap">Harbourline Bank is a fictional bank. This is a demo; please don't enter real card numbers or personal details.</footer>
+
+  <!-- ===== Chat widget: START =====
+       Replace everything between START and END with the snippet from the console:
+       Conversational Agents → your agent → Integrations → Conversational Messenger → Connect → copy.
+       The snippet only has your project ID and agent ID, no secrets, so it's safe to keep in this file. -->
+  <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
+  <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
+  <df-messenger
+    location="global"
+    project-id="YOUR_PROJECT_ID"
+    agent-id="YOUR_AGENT_ID"
+    language-code="en"
+    max-query-length="-1">
+    <df-messenger-chat-bubble chat-title="Harbourline Support"></df-messenger-chat-bubble>
+  </df-messenger>
+  <!-- ===== Chat widget: END ===== -->
+</body>
+</html>

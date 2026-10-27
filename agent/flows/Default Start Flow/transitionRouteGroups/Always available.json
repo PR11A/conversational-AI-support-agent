@@ -1,0 +1,69 @@
+{
+  "name": "a1398005-b01c-4689-ba21-a4301a33316a",
+  "displayName": "Always available",
+  "transitionRoutes": [ {
+    "intent": "human.request",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Of course. I’m connecting you with a team member now." ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "handoff_summary",
+        "value": "customer asked for a person"
+      } ]
+    },
+    "targetFlow": "Human handoff",
+    "name": "4fce50f9-a74d-4d94-aff5-efff480e366d"
+  }, {
+    "intent": "card.lost",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Please freeze your card now in the Harbourline app, or call our 24/7 card line on 1-800-555-0142. I’m also connecting you with a team member." ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "handoff_summary",
+        "value": "customer reports lost or stolen card"
+      } ]
+    },
+    "targetFlow": "Human handoff",
+    "name": "a43f356f-6076-44c9-bbeb-5fbaeccc1c84"
+  }, {
+    "intent": "dispute",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I’m connecting you with a team member who can help with your dispute." ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "handoff_summary",
+        "value": "customer disputes a transaction"
+      } ]
+    },
+    "targetFlow": "Human handoff",
+    "name": "26dc42a5-458e-418d-9ed1-6e8c8cb81066"
+  }, {
+    "intent": "fees.complaint",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I understand. I can’t change fees myself, so I’m connecting you with a team member." ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "handoff_summary",
+        "value": "customer complains about a fee"
+      } ]
+    },
+    "targetFlow": "Human handoff",
+    "name": "7b48e140-eae6-414c-89ca-8e6fc07c1639"
+  } ]
+}

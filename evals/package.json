@@ -1,0 +1,16 @@
+{
+  "name": "harbourline-evals",
+  "private": true,
+  "description": "Stage 1 eval suite for the Harbourline Support Dialogflow CX agent",
+  "scripts": {
+    "eval": "promptfoo eval",
+    "view": "promptfoo view"
+  },
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "devDependencies": {
+    "@google-cloud/dialogflow-cx": "6.2.1",
+    "promptfoo": "0.124.1"
+  }
+}

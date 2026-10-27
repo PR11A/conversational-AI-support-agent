@@ -1,0 +1,44 @@
+{
+  "name": "20a5ad4d-2985-4442-92bb-f10d6f359122",
+  "displayName": "Offer handoff",
+  "form": {
+  
+  },
+  "transitionRoutes": [ {
+    "intent": "yes",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Connecting you now." ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "handoff_summary",
+        "value": "fee not in schedule, customer accepted a team member"
+      } ]
+    },
+    "targetFlow": "Human handoff",
+    "name": "229032e1-b689-4a85-8b01-434b0ce2db8c"
+  }, {
+    "intent": "no",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "No problem. Anything else I can help with?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Start Page",
+    "name": "2b8741f6-4a6b-425f-af5a-b1f6e1eceef1"
+  }, {
+    "intent": "fees.ask",
+    "triggerFulfillment": {
+    
+    },
+    "targetPage": "Fee answer",
+    "name": "495fe5be-75df-4f88-9c43-dd1a31025beb"
+  } ],
+  "transitionRouteGroups": [ "Always available" ]
+}

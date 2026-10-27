@@ -1,0 +1,16 @@
+{
+  "name": "b06948da-b300-4c6c-9422-0d5558d766c5",
+  "displayName": "sensitive.shared",
+  "parameters": [ {
+    "id": "phone-number",
+    "entityType": "@sys.phone-number"
+  }, {
+    "id": "number",
+    "entityType": "@sys.number"
+  }, {
+    "id": "date-period",
+    "entityType": "@sys.date-period"
+  } ],
+  "priority": 500000,
+  "numTrainingPhrases": 14
+}
