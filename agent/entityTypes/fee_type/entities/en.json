@@ -29,7 +29,7 @@
     "languageCode": "en"
   }, {
     "value": "replacement_card",
-    "synonyms": [ "new card", "replacement card" ],
+    "synonyms": [ "express card", "new card", "replacement card" ],
     "languageCode": "en"
   }, {
     "value": "foreign_transaction",
@@ -45,7 +45,7 @@
     "languageCode": "en"
   }, {
     "value": "harbourline_atm",
-    "synonyms": [ "Harbourline ATM", "own ATM", "your ATM," ],
+    "synonyms": [ "Harbourline ATM", "own ATM", "your ATM" ],
     "languageCode": "en"
   }, {
     "value": "nsf",
@@ -57,7 +57,7 @@
     "languageCode": "en"
   }, {
     "value": "premier_monthly",
-    "synonyms": [ "premier account fee,", "premier monthly fee" ],
+    "synonyms": [ "premier account fee", "premier monthly fee" ],
     "languageCode": "en"
   }, {
     "value": "everyday_monthly",
@@ -65,7 +65,7 @@
     "languageCode": "en"
   }, {
     "value": "monthly_fee",
-    "synonyms": [ "account fee", "account keeping fee", "monthly fee," ],
+    "synonyms": [ "account fee", "account keeping fee", "monthly fee" ],
     "languageCode": "en"
   } ]
 }
