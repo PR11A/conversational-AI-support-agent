@@ -42,11 +42,11 @@ class CxProvider {
     this.location = process.env.CX_LOCATION || 'global';
     this.agentId = process.env[config.agentIdEnv || 'CX_AGENT_ID'];
     this.languageCode = config.languageCode || 'en';
-    if (!this.projectId || !this.agentId) {
-      throw new Error(
-        `Missing CX_PROJECT_ID or ${config.agentIdEnv || 'CX_AGENT_ID'}. Copy .env.example to .env and fill it in.`
-      );
-    }
+    // Reported when a test runs (not here), so "npm run eval:flow" works before the playbook bot exists.
+    this.configError =
+      !this.projectId || !this.agentId
+        ? `Missing CX_PROJECT_ID or ${config.agentIdEnv || 'CX_AGENT_ID'}. Copy .env.example to .env and fill it in.`
+        : null;
     // global uses dialogflow.googleapis.com; any other location has its own endpoint.
     const apiEndpoint =
       this.location === 'global'
@@ -60,6 +60,7 @@ class CxProvider {
   }
 
   async callApi(prompt, context) {
+    if (this.configError) return { error: this.configError };
     const turns = (context && context.vars && context.vars.turns) || [prompt];
     const session = this.client.projectLocationAgentSessionPath(
       this.projectId,
@@ -95,6 +96,10 @@ class CxProvider {
         matchType: (qr.match && qr.match.matchType) || null,
         confidence: (qr.match && qr.match.confidence) || 0,
         page: (qr.currentPage && qr.currentPage.displayName) || null,
+        // Stage 2: true when a playbook (generative AI) handled this turn. Used to estimate cost.
+        generative:
+          (qr.match && qr.match.matchType === 'PLAYBOOK') ||
+          (qr.traceBlocks || []).some((b) => b.playbookTraceMetadata),
         latencyMs,
       });
     }

@@ -1,2 +1,4 @@
 .env
 node_modules/
+# Results files contain your agent IDs; keep them local. The scorecard has no IDs.
+results*.json

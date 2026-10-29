@@ -17,15 +17,15 @@ Customers with simple, urgent questions (a lost card, a fee they don't understan
 | Stage | Status | Result |
 | --- | --- | --- |
 | 1 · Flow-only bot | Done Oct 29 | Automated evals **20/20** (bar 19/20) · 0 invented fees · handoffs 6/6 · guardrails 4/4 |
-| 2 · Card and dispute flows + AI vs flow test | Oct 28 – Nov 1 | Coming soon |
+| 2 · Card and dispute flows + AI vs flow test | Oct 29 – Nov 1 | In progress: [spec](docs/spec-stage2.md) and 50 tests written |
 
 ## What's in this repo
 | Folder | What it is |
 | --- | --- |
-| [docs/](docs/) | PRD, stage 1 spec, decision log, [architecture blueprint](docs/stage1-blueprint.md), [step-by-step build guide](docs/stage1-build-every-step.md), setup guide, training phrases |
+| [docs/](docs/) | PRD, stage 1 and [stage 2](docs/spec-stage2.md) specs, decision log, [architecture blueprint](docs/stage1-blueprint.md), [step-by-step build guide](docs/stage1-build-every-step.md), setup guide, training phrases |
 | [agent/](agent/) | The bot itself, as exported from Dialogflow CX |
 | [web/](web/) | The help page with the chat widget |
-| [evals/](evals/) | The 20 automated tests (promptfoo + a small Dialogflow connector) |
+| [evals/](evals/) | The automated tests: 20 for stage 1, 50 for stage 2, and the AI vs flow scorecard (promptfoo + a small Dialogflow connector) |
 
 ## Built with
 Google Dialogflow CX · promptfoo · Claude Code (built from my PRD and specs)
