@@ -1,4 +1,4 @@
-# Evals: the 20 stage 1 tests
+# Evals: stage 1 (20 tests) and stage 2 (50 tests)
 
 This folder holds the automated tests ("evals") for the Harbourline support bot. They decide whether stage 1 is good enough to ship.
 
@@ -148,3 +148,21 @@ The PM defines the tests and the pass bar (the spec), an engineer wires them to 
 | Date | Score | Notes |
 | --- | --- | --- |
 | Oct 29, 2026 | **20/20** | Stage 1 flow bot. 0 invented fees, handoffs 6/6 (H2 on message 2, 0 extra turns), guardrails 4/4. N1 and N2 said "I don't have that fee" with no handoff. G4 also handed off, which the test allows. |
+
+## Stage 2: 50 tests and the AI vs flow scorecard
+
+Stage 2 adds a second suite, [promptfooconfig-stage2.yaml](promptfooconfig-stage2.yaml), and leaves the 20 stage 1 tests exactly as they were (the baseline). The full list and how each metric is counted are in [spec-stage2.md](../docs/spec-stage2.md), section 8.
+
+| Command (in `evals/`) | What it does |
+| --- | --- |
+| `npm run eval:flow` then `npm run score:flow` | Runs the 50 tests on the flow bot only and prints its scorecard (about $0.51) |
+| `npm run eval:both` then `npm run score` | Runs the 50 tests on the flow bot **and** the playbook bot, 3 times each, then prints both scorecards and the D10 verdict (about $4) |
+
+New files:
+
+| File | In plain words |
+| --- | --- |
+| `promptfooconfig-stage2.yaml` | **The stage 2 list**: 50 messages, their pass rules, and what each one counts towards (resolve, hand off, guardrail) |
+| `compare.js` | **The scorecard**: turns the results into the PRD metrics (fee accuracy, safe containment, escalation recall and precision, cost, p95 latency) for each bot, then applies the D10 rule. Saves it to `scorecard-stage2.md` |
+
+`checks.js` gained one rule (`turnChecks`: what the reply to message 2 or 3 must say, for the card and dispute steps), and `cx-provider.js` now notes which turns a playbook answered, for the cost estimate. Add `CX_PLAYBOOK_AGENT_ID` to your `.env` once the playbook bot exists (see `.env.example`). Results files (`results*.json`) contain your agent IDs, so they stay off GitHub.
