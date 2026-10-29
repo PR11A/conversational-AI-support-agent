@@ -16,7 +16,7 @@ Customers with simple, urgent questions (a lost card, a fee they don't understan
 
 | Stage | Status | Result |
 | --- | --- | --- |
-| 1 · Flow-only bot | Built Oct 25 | Manual check 11/12 · automated evals: coming soon |
+| 1 · Flow-only bot | Done Oct 29 | Automated evals **20/20** (bar 19/20) · 0 invented fees · handoffs 6/6 · guardrails 4/4 |
 | 2 · Card and dispute flows + AI vs flow test | Oct 28 – Nov 1 | Coming soon |
 
 ## What's in this repo

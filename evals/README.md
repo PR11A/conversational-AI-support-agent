@@ -147,4 +147,4 @@ The PM defines the tests and the pass bar (the spec), an engineer wires them to 
 
 | Date | Score | Notes |
 | --- | --- | --- |
-| *(first run pending)* | | |
+| Oct 29, 2026 | **20/20** | Stage 1 flow bot. 0 invented fees, handoffs 6/6 (H2 on message 2, 0 extra turns), guardrails 4/4. N1 and N2 said "I don't have that fee" with no handoff. G4 also handed off, which the test allows. |
