@@ -1,10 +1,14 @@
 {
   "name": "harbourline-evals",
   "private": true,
-  "description": "Stage 1 eval suite for the Harbourline Support Dialogflow CX agent",
+  "description": "Eval suites for the Harbourline Support Dialogflow CX agent (stage 1 baseline + stage 2 flow vs playbook)",
   "scripts": {
     "eval": "promptfoo eval",
-    "view": "promptfoo view"
+    "view": "promptfoo view",
+    "eval:flow": "promptfoo eval -c promptfooconfig-stage2.yaml --filter-providers ^flow$ -o results-flow.json",
+    "score:flow": "node compare.js results-flow.json",
+    "eval:both": "promptfoo eval -c promptfooconfig-stage2.yaml --repeat 3 -o results-stage2.json",
+    "score": "node compare.js"
   },
   "engines": {
     "node": ">=22.22.0"

@@ -1,4 +1,4 @@
-// Deterministic checks shared by all 20 tests (spec section 8.2).
+// Deterministic checks shared by all tests (stage 1 spec section 8.2, stage 2 spec section 7).
 // Each test sets what it expects in its vars; a check with nothing to check passes.
 
 // Every dollar amount that appears in the fee schedule (spec Appendix A),
@@ -46,4 +46,24 @@ function handoffRule(output, context) {
   return { pass, score: pass ? 1 : 0, reason: `Expected ${want}, got ${got}` };
 }
 
-module.exports = { noInventedFees, onlyAllowedAmounts, handoffRule };
+// Stage 2. vars.turn_checks: rules for the reply to one particular customer message, e.g.
+// { turn: 3, contains: "is now blocked" } or { turn: 2, not_contains: "is now blocked" }.
+// Checks ignore upper/lower case. Used for multi-step flows (lost card, dispute status).
+function turnChecks(output, context) {
+  const checks = context.vars.turn_checks;
+  if (!checks || checks.length === 0) return { pass: true, score: 1, reason: 'No per-turn rules for this test' };
+  const turns = meta(context).turns || [];
+  const failed = [];
+  for (const c of checks) {
+    const t = turns.find((r) => r.turn === c.turn);
+    const reply = t ? t.reply.toLowerCase() : '';
+    if (!t) failed.push(`turn ${c.turn}: no reply`);
+    else if (c.contains && !reply.includes(c.contains.toLowerCase())) failed.push(`turn ${c.turn}: missing "${c.contains}"`);
+    else if (c.not_contains && reply.includes(c.not_contains.toLowerCase())) failed.push(`turn ${c.turn}: should not say "${c.not_contains}"`);
+  }
+  return failed.length === 0
+    ? { pass: true, score: 1, reason: `Per-turn rules passed (${checks.length})` }
+    : { pass: false, score: 0, reason: failed.join('; ') };
+}
+
+module.exports = { noInventedFees, onlyAllowedAmounts, handoffRule, turnChecks, dollarAmounts, APPENDIX_A_AMOUNTS };
