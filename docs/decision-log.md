@@ -96,6 +96,7 @@ Rule: no invented numbers. "Why" stays as a hypothesis until an eval run or bill
 
 - **Oct 24 note:** stage 1 is flow-only with generative features off (D2), so the model is chosen when the stage 2 playbook is built.
 
+- **Nov 1 note:** the console default for the fees playbook (seen in the test chat's Models box) is **gemini-3.5-flash-lite**. Kept as is, per this recommendation.
 - **Category:** model
 - **Options considered:** console default; a larger model; a smaller or faster model.
 - **Recommendation:** keep the console default for the stage 2 playbook and record its name here. Only switch if evals or latency say so.
@@ -186,6 +187,17 @@ Rule: no invented numbers. "Why" stays as a hypothesis until an eval run or bill
 - **Tradeoff accepted:** about $4 of credits per head-to-head run instead of about $1.50.
 - **What would change my mind:** the spike failing (plan B), or credits running low (drop to 1 run and say so).
 
+## D15 · How the AI plugs in for fees: playbook or generator? · **Decided Nov 1 (P): generator**
+
+- **Category:** model, tools
+- **Options considered:** (1) a Task playbook that the Start page's fee route hands the chat to; (2) a **generator**: an AI call inside the flow that only writes the fee answer, while the flow keeps control.
+- **What happened with the playbook (Nov 1 hand tests on the "- AI" copy):** fee answer correct ($35.00) but (a) it first greeted instead of answering, (b) after a fee answer "can I contact human" got "I'm connecting you" from the AI with **no real handoff**, because the flow's route group isn't checked while a playbook holds the chat, and (c) when told to finish after one answer, it finished **without answering** and the session ended.
+- **Decision:** switch to a generator. The flow handles every message (handoffs, card, disputes), and the AI only writes the fee answer text from the fee schedule. The playbook stays in the agent, unused, as evidence.
+- **Why:** it fixes the cause (control moving back and forth) instead of patching symptoms, and it makes D10 a cleaner test: the two bots differ only in who writes the fee answer.
+- **Tradeoff accepted:** the AI can't hold a multi-turn fee conversation (e.g. a clarifying question); each fee question is answered in one go. Questions the flow doesn't recognise as fee questions never reach the AI.
+- **Nov 1 hand tests on the generator (all passed):** overdraft answered straight away ($35.00, no greeting); "can I contact human" after a fee answer runs the real Human handoff; two fee questions in a row both right ($35.00, $45.00); cashier's cheque gets no amount. Gap found: the AI's "a team member can help if you'd like" left "yes" unhandled. Fix: the generator returns the hidden code word NOFEE for unknown fees, and a rules page "AI fee check" sends NOFEE to Offer handoff (the customer sees the usual wording) and shows every other answer. Re-test passed: "yes" reaches Human handoff.
+- **What would change my mind:** the generator failing the D10 bar on messy phrasing because fees.ask doesn't catch it; then consider sending no-match to the generator too.
+
 ## Stage 2 kickoff (Oct 29)
 
 - **Spec:** [spec-stage2.md](spec-stage2.md) v1.0, steps 0 to 7 with exact console values.
@@ -212,3 +224,5 @@ Rule: no invented numbers. "Why" stays as a hypothesis until an eval run or bill
 - **Oct 29 (later):** agent re-exported (open item closed). D12 added (thanks/ok handoff deferred to stage 2, P agreed). Stage 2 backlog started.
 - **Oct 29 (later):** D10 Decided by P: a tie is enough. D2's gate line updated to match.
 - **Oct 29 (later):** stage 2 started. D13 (fake data in the flow) and D14 (AI vs flow test design) added as Proposed. Stage 2 spec and 50-test suite written.
+- **Nov 1:** P dropped the Nov 1 deadline; stage 2 continues step by step, AI test first. Test copy "Conversational support agent - AI" created from the Oct 29 export; "Fees response" Task playbook added; Start page fees.ask route now goes to the playbook (the D14 spike question is answered: a flow route can hand to a playbook). D8: default model recorded.
+- **Nov 1 (later):** playbook hand tests failed on handoff (D15); P chose a generator instead.

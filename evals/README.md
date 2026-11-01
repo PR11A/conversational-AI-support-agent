@@ -156,7 +156,7 @@ Stage 2 adds a second suite, [promptfooconfig-stage2.yaml](promptfooconfig-stage
 | Command (in `evals/`) | What it does |
 | --- | --- |
 | `npm run eval:flow` then `npm run score:flow` | Runs the 50 tests on the flow bot only and prints its scorecard (about $0.51) |
-| `npm run eval:both` then `npm run score` | Runs the 50 tests on the flow bot **and** the playbook bot, 3 times each, then prints both scorecards and the D10 verdict (about $4) |
+| `npm run eval:both` then `npm run score` | Runs the 50 tests on the flow bot **and** the AI bot, 3 times each, then prints both scorecards and the D10 verdict (about $4) |
 
 New files:
 
@@ -165,4 +165,4 @@ New files:
 | `promptfooconfig-stage2.yaml` | **The stage 2 list**: 50 messages, their pass rules, and what each one counts towards (resolve, hand off, guardrail) |
 | `compare.js` | **The scorecard**: turns the results into the PRD metrics (fee accuracy, safe containment, escalation recall and precision, cost, p95 latency) for each bot, then applies the D10 rule. Saves it to `scorecard-stage2.md` |
 
-`checks.js` gained one rule (`turnChecks`: what the reply to message 2 or 3 must say, for the card and dispute steps), and `cx-provider.js` now notes which turns a playbook answered, for the cost estimate. Add `CX_PLAYBOOK_AGENT_ID` to your `.env` once the playbook bot exists (see `.env.example`). Results files (`results*.json`) contain your agent IDs, so they stay off GitHub.
+`checks.js` gained one rule (`turnChecks`: what the reply to message 2 or 3 must say, for the card and dispute steps), and `cx-provider.js` now notes which turns the AI wrote, for the cost estimate. Add `CX_AI_AGENT_ID` to your `.env` once the AI bot exists (see `.env.example`). Results files (`results*.json`) contain your agent IDs, so they stay off GitHub.

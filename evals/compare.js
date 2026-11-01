@@ -1,5 +1,5 @@
 // Stage 2 scorecard: turns a promptfoo results file into the PRD metrics for each bot,
-// then applies the D10 rule ("a tie is enough") to decide whether the playbook takes over fees.
+// then applies the D10 rule ("a tie is enough") to decide whether the AI takes over fees.
 //
 //   node compare.js                 reads results-stage2.json (written by npm run eval:both)
 //   node compare.js other.json      reads another results file
@@ -10,9 +10,9 @@ const fs = require('fs');
 const path = require('path');
 const { dollarAmounts, APPENDIX_A_AMOUNTS } = require('./checks');
 
-// List price per turn, checked Oct 19 (PRD section 4). A turn a playbook handled costs more.
+// List price per turn, checked Oct 19 (PRD section 4). A turn the AI wrote costs more.
 const PRICE_FLOW_TURN = 0.007;
-const PRICE_PLAYBOOK_TURN = 0.012;
+const PRICE_AI_TURN = 0.012;
 
 // PRD section 4 targets (shine version).
 const TARGETS = { safeContainment: 0.7, recall: 0.95, precision: 0.85 };
@@ -117,7 +117,7 @@ function score(bot) {
   const turns = ran.flatMap((x) => x.turns);
   s.turns = turns.length;
   s.playbookTurns = turns.filter((t) => t.generative).length;
-  s.cost = (turns.length - s.playbookTurns) * PRICE_FLOW_TURN + s.playbookTurns * PRICE_PLAYBOOK_TURN;
+  s.cost = (turns.length - s.playbookTurns) * PRICE_FLOW_TURN + s.playbookTurns * PRICE_AI_TURN;
   s.p95 = p95(turns.map((t) => t.latencyMs || 0));
   s.p95Playbook = p95(turns.filter((t) => t.generative).map((t) => t.latencyMs || 0));
 
@@ -127,7 +127,7 @@ function score(bot) {
 
 const scores = Object.values(bots).map(score);
 const flow = scores.find((s) => s.label === 'flow');
-const playbook = scores.find((s) => s.label === 'playbook');
+const playbook = scores.find((s) => s.label === 'ai');
 
 const lines = [];
 const out = (l = '') => lines.push(l);
@@ -150,8 +150,8 @@ row('…of which messy phrasing', 'shown, not gated', (s) => pct(s.messyResolved
 row('Escalation recall (right turn)', '≥ 95%', (s) => pct(s.handoffRight, s.handoffTotal));
 row('Escalation precision', '≥ 85%', (s) => pct(s.handoffsWanted, s.handoffsMade));
 row('p95 latency per turn', '< 1.5 s flow, < 3 s AI', (s) => `${(s.p95 / 1000).toFixed(2)} s`);
-row('p95 latency, playbook turns only', '< 3 s', (s) => (s.playbookTurns ? `${(s.p95Playbook / 1000).toFixed(2)} s` : 'none'));
-row('Turns (of which playbook)', '', (s) => `${s.turns} (${s.playbookTurns})`);
+row('p95 latency, AI turns only', '< 3 s', (s) => (s.playbookTurns ? `${(s.p95Playbook / 1000).toFixed(2)} s` : 'none'));
+row('Turns (of which AI)', '', (s) => `${s.turns} (${s.playbookTurns})`);
 row('Cost of this run, list price', '', (s) => `$${s.cost.toFixed(2)}`);
 row('Tests that errored', '0', (s) => String(s.errors));
 out();
@@ -170,7 +170,7 @@ for (const s of scores) {
 }
 out();
 
-// D10: the playbook takes over fees only if it ties or beats the flow on every safety measure.
+// D10: the AI takes over fees only if it ties or beats the flow on every safety measure.
 if (flow && playbook) {
   const checks = [
     ['Fee accuracy 100%', playbook.feeCorrect === playbook.feeQuoted],
@@ -187,12 +187,12 @@ if (flow && playbook) {
     ['No test errored', playbook.errors === 0],
   ];
   const gate = checks.every(([, ok]) => ok);
-  out(`## D10 gate (a tie is enough): ${gate ? 'PASS, the playbook can take over fees' : 'FAIL, fees stay on the flow'}`);
+  out(`## D10 gate (a tie is enough): ${gate ? 'PASS, the AI can take over fees' : 'FAIL, fees stay on the flow'}`);
   out();
   for (const [name, ok] of checks) out(`- ${ok ? '✅' : '❌'} ${name}`);
   out();
 } else {
-  out('## D10 gate: not scored (needs results for both "flow" and "playbook").');
+  out('## D10 gate: not scored (needs results for both "flow" and "ai").');
   out();
 }
 

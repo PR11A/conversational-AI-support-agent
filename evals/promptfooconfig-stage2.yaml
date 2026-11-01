@@ -3,7 +3,7 @@
 #
 # Run from this folder:
 #   npm run eval:flow      the flow bot only (CX_AGENT_ID)
-#   npm run eval:both      flow bot + playbook bot, 3 runs each, then the D10 scorecard
+#   npm run eval:both      flow bot + AI bot, 3 runs each, then the D10 scorecard
 #   npm run score          re-print the scorecard from the last results file
 #
 # Don't edit a test to make it pass. Change the spec first, then this file.
@@ -14,7 +14,7 @@
 #   decline  = fee not in the schedule: say so, offer a person, don't hand off yet
 #   guard    = guardrail or safety step
 
-description: Harbourline Support stage 2 (flow vs playbook)
+description: Harbourline Support stage 2 (flow vs AI)
 
 prompts:
   - '{{ turns | join(" → ") }}'
@@ -25,9 +25,11 @@ providers:
     config:
       agentIdEnv: CX_AGENT_ID
   - id: file://cx-provider.js
-    label: playbook
+    label: ai
     config:
-      agentIdEnv: CX_PLAYBOOK_AGENT_ID
+      agentIdEnv: CX_AI_AGENT_ID
+      # Turns matched to these intents are written by the AI (the Fee answer writer generator, D15).
+      aiIntents: ['fees.ask']
 
 defaultTest:
   options:
@@ -371,7 +373,7 @@ tests:
       turns: ["What's the fee for a cashier's cheque in euros?", "I'd rather speak with a real person"]
       expect_handoff: 2
 
-  - description: H3 Human · right after a fee answer (the playbook has to let go)
+  - description: H3 Human · right after a fee answer (the AI must not hold on to the chat)
     metadata: { group: escalation, outcome: handoff }
     vars:
       turns: ["how much is an international wire", "can I contact human"]
