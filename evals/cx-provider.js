@@ -42,17 +42,43 @@ class CxProvider {
     this.location = process.env.CX_LOCATION || 'global';
     this.agentId = process.env[config.agentIdEnv || 'CX_AGENT_ID'];
     this.languageCode = config.languageCode || 'en';
-    if (!this.projectId || !this.agentId) {
-      throw new Error(
-        `Missing CX_PROJECT_ID or ${config.agentIdEnv || 'CX_AGENT_ID'}. Copy .env.example to .env and fill it in.`
-      );
-    }
+    // Intents whose reply is written by a generator (stage 2 AI bot), counted as AI turns.
+    this.aiIntents = config.aiIntents || [];
+    // Reported when a test runs (not here), so "npm run eval:flow" works before the AI bot exists.
+    this.configError =
+      !this.projectId || !this.agentId
+        ? `Missing CX_PROJECT_ID or ${config.agentIdEnv || 'CX_AGENT_ID'}. Copy .env.example to .env and fill it in.`
+        : null;
     // global uses dialogflow.googleapis.com; any other location has its own endpoint.
     const apiEndpoint =
       this.location === 'global'
         ? 'dialogflow.googleapis.com'
         : `${this.location}-dialogflow.googleapis.com`;
     this.client = new SessionsClient({ apiEndpoint });
+    // Shared by every test this provider runs, so the warm-up is sent only once.
+    this.warmUp = null;
+  }
+
+  sessionPath(prefix) {
+    return this.client.projectLocationAgentSessionPath(
+      this.projectId,
+      this.location,
+      this.agentId,
+      `${prefix}-${crypto.randomUUID()}`
+    );
+  }
+
+  // The client logs in to Google and opens its connection on the first message it sends,
+  // which took 17 to 27 seconds in our Nov 14 runs. One untimed "hi" in its own chat absorbs that cost,
+  // so it doesn't land in the first tests' latency.
+  warmUpOnce() {
+    if (!this.warmUp) {
+      this.warmUp = this.client.detectIntent({
+        session: this.sessionPath('warmup'),
+        queryInput: { text: { text: 'hi' }, languageCode: this.languageCode },
+      });
+    }
+    return this.warmUp;
   }
 
   id() {
@@ -60,13 +86,10 @@ class CxProvider {
   }
 
   async callApi(prompt, context) {
+    if (this.configError) return { error: this.configError };
+    await this.warmUpOnce();
     const turns = (context && context.vars && context.vars.turns) || [prompt];
-    const session = this.client.projectLocationAgentSessionPath(
-      this.projectId,
-      this.location,
-      this.agentId,
-      `eval-${crypto.randomUUID()}`
-    );
+    const session = this.sessionPath('eval');
 
     const results = [];
     for (const [i, text] of turns.entries()) {
@@ -95,6 +118,12 @@ class CxProvider {
         matchType: (qr.match && qr.match.matchType) || null,
         confidence: (qr.match && qr.match.confidence) || 0,
         page: (qr.currentPage && qr.currentPage.displayName) || null,
+        // Stage 2: true when generative AI wrote this turn's reply (a playbook, or a generator on one
+        // of the intents listed in config.aiIntents). Used to estimate cost and AI latency.
+        generative:
+          (qr.match && qr.match.matchType === 'PLAYBOOK') ||
+          (qr.traceBlocks || []).some((b) => b.playbookTraceMetadata) ||
+          this.aiIntents.includes((qr.match && qr.match.intent && qr.match.intent.displayName) || ''),
         latencyMs,
       });
     }

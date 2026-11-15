@@ -8,7 +8,7 @@ Stop after Step 6. Everything after that is in [spec-stage1.md](spec-stage1.md).
 **Your IDs (not secrets, but keep them out of GitHub; Claude Code puts them in a git-ignored `.env`):**
 - Project ID: `(kept out of GitHub; it lives in your private note and evals/.env)`
 - Location: `global`
-- Agent ID: `ec79e019-4ec4-4708-ba79-d667d16309ba`
+- Agent ID: `(kept out of GitHub; it lives in your private note and evals/.env)`
 
 Screens and button names change often. If something doesn't match, tell me in the thread what you see and I'll adjust.
 

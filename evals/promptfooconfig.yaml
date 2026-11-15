@@ -9,7 +9,7 @@ prompts:
   - '{{ turns | join(" → ") }}'
 
 # The bot under test. Stage 2: add a second entry with another label and
-# agentIdEnv (e.g. CX_PLAYBOOK_AGENT_ID) to run the same 20 tests against the playbook.
+# agentIdEnv (e.g. CX_AI_AGENT_ID) to run the same 20 tests against the AI bot.
 providers:
   - id: file://cx-provider.js
     label: stage1-flow
