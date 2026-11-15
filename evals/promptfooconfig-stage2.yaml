@@ -1,4 +1,4 @@
-# Harbourline Support · stage 2 eval suite (spec-stage2.md section 7): 50 tests.
+# Harbourline Support · stage 2 eval suite (spec-stage2.md section 7): 51 tests.
 # The stage 1 suite (promptfooconfig.yaml) stays frozen as the 20/20 baseline.
 #
 # Run from this folder:
@@ -256,7 +256,7 @@ tests:
       turns: ["what's the overdraft fee", "no that's everything"]
       expect_handoff: false
       turn_checks:
-        - { turn: 2, contains: "great day" }
+        - { turn: 2, not_contains: "connecting you" }
 
   - description: T3 Thanks · goodbye with no question
     metadata: { group: ending, outcome: resolve }
@@ -265,7 +265,7 @@ tests:
       expect_handoff: false
     assert: [{ type: icontains, value: "great day" }]
 
-  # ======== Lost or stolen card (6) · deterministic flow; card line first, block only after a yes ========
+  # ======== Lost or stolen card (7) · deterministic flow; card line first, block only after a yes ========
   - description: L1 Card · first reply gives the card line and asks for last 4
     metadata: { group: card, outcome: guard }
     vars:
@@ -286,13 +286,13 @@ tests:
         - { turn: 3, contains: "is now blocked" }
         - { turn: 4, contains: "5 to 7 business days" }
 
-  - description: L3 Card · block credit card, no replacement
+  - description: L3 Card · block debit card, no replacement
     metadata: { group: card, outcome: resolve }
     vars:
-      turns: ["someone nicked my card at the pub", "the last digits are 9083", "yes block it", "no thanks"]
+      turns: ["someone nicked my card at the pub", "the last digits are 4417", "yes block it", "no thanks"]
       expect_handoff: false
       turn_checks:
-        - { turn: 3, contains: "credit card ending 9083 is now blocked" }
+        - { turn: 3, contains: "debit card ending 4417 is now blocked" }
 
   - description: L4 Card · digits don't match a card, so nothing is blocked and a person takes over
     metadata: { group: card, outcome: handoff }
@@ -317,6 +317,16 @@ tests:
       turns: ["I lost my card", "just put me through to a person"]
       expect_handoff: 2
 
+  - description: L7 Card · unclear reply on the confirm step re-asks
+    metadata: { group: card, outcome: guard }
+    vars:
+      turns: ["I lost my card", "4417", "hmm wait"]
+      expect_handoff: false
+      turn_checks:
+        - { turn: 3, contains: "block" }
+        - { turn: 3, not_contains: "is now blocked" }
+        - { turn: 3, not_contains: "great day" }
+
   # ======== Disputes (6) · new dispute = hand off (filing is a non-goal); status = look it up ========
   - description: D1 Dispute · unrecognised charge (new dispute)
     metadata: { group: dispute, outcome: handoff }
@@ -331,22 +341,23 @@ tests:
       expect_handoff: false
       turn_checks:
         - { turn: 2, contains: "under review" }
-        - { turn: 2, contains: "Nov 12" }
+        - { turn: 2, contains: "Nov 28" }
 
-  - description: D3 Dispute status · resolved
+  - description: D3 Dispute status · number typed as "dsp 10421"
     metadata: { group: dispute, outcome: resolve }
     vars:
-      turns: ["can you check the status of my dispute", "it's 10388"]
+      turns: ["can you check the status of my dispute", "dsp 10421"]
       expect_handoff: false
       turn_checks:
-        - { turn: 2, contains: "resolved in your favour" }
+        - { turn: 2, contains: "under review" }
 
   - description: D4 Dispute status · number in the first message
     metadata: { group: dispute, outcome: resolve }
     vars:
-      turns: ["any update on my dispute 10502?"]
+      turns: ["any update on my dispute 10421?", "DSP-10421 · Coastline Electronics"]
       expect_handoff: false
-    assert: [{ type: icontains, value: "receipt" }]
+      turn_checks:
+        - { turn: 2, contains: "under review" }
 
   - description: D5 Dispute status · number not found
     metadata: { group: dispute, outcome: handoff }

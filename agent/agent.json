@@ -3,7 +3,7 @@
   "defaultLanguageCode": "en",
   "timeZone": "Australia/Sydney",
   "enableLogging": true,
-  "projectNumber": 480907388752,
+  "projectNumber": "YOUR_PROJECT_NUMBER",
   "speechToTextSettings": {
   
   },

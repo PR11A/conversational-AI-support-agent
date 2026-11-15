@@ -55,6 +55,30 @@ class CxProvider {
         ? 'dialogflow.googleapis.com'
         : `${this.location}-dialogflow.googleapis.com`;
     this.client = new SessionsClient({ apiEndpoint });
+    // Shared by every test this provider runs, so the warm-up is sent only once.
+    this.warmUp = null;
+  }
+
+  sessionPath(prefix) {
+    return this.client.projectLocationAgentSessionPath(
+      this.projectId,
+      this.location,
+      this.agentId,
+      `${prefix}-${crypto.randomUUID()}`
+    );
+  }
+
+  // The client logs in to Google and opens its connection on the first message it sends,
+  // which took 17 to 27 seconds in our Nov 14 runs. One untimed "hi" in its own chat absorbs that cost,
+  // so it doesn't land in the first tests' latency.
+  warmUpOnce() {
+    if (!this.warmUp) {
+      this.warmUp = this.client.detectIntent({
+        session: this.sessionPath('warmup'),
+        queryInput: { text: { text: 'hi' }, languageCode: this.languageCode },
+      });
+    }
+    return this.warmUp;
   }
 
   id() {
@@ -63,13 +87,9 @@ class CxProvider {
 
   async callApi(prompt, context) {
     if (this.configError) return { error: this.configError };
+    await this.warmUpOnce();
     const turns = (context && context.vars && context.vars.turns) || [prompt];
-    const session = this.client.projectLocationAgentSessionPath(
-      this.projectId,
-      this.location,
-      this.agentId,
-      `eval-${crypto.randomUUID()}`
-    );
+    const session = this.sessionPath('eval');
 
     const results = [];
     for (const [i, text] of turns.entries()) {
